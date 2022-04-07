@@ -1,55 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title>Wasm Imgur bruteforce</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-  <style>
-    body {
-      background-color: rgb(246, 248, 250);
-      font-family: 'Lato', sans-serif;
-      user-select: none;
-    }
-
-    i {
-      font-family: 'FontAwesome';
-      font-style: normal;
-    }
-
-    .generated_image {
-      max-height: 100%;
-      max-width: 100%;
-      border: 1px black solid;
-    }
-
-    .container {
-      margin-top: 20px;
-      margin-left: 4px;
-      margin-right: 4px;
-    }
-
-    button {
-      border: 1px solid rgba(27, 31, 36, 0.212);
-      box-shadow: rgba(27, 31, 36, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.2) 0px 1px 0px 0px;
-      background-color: rgb(246, 248, 250);
-      border-radius: 6px;
-      padding: 4px;
-    }
-
-    button:hover {
-      cursor: pointer;
-      background-color: rgb(237, 239, 241);
-    }
-
-    button:disabled {
-      cursor: not-allowed;
-    }
-
-    button:active {
-      background-color: rgb(227, 229, 231);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
 </head>
 
@@ -71,7 +27,7 @@
 
   <div class="container">
     <img id="loading"
-      src="https://web.archive.org/web/20091026235011/http://www.geocities.com/croemmayaguez/loadingv.gif" hidden>
+      src="https://web.archive.org/web/20091026235011/http://www.geocities.com/croemmayaguez/loadingv.gif" hidden alt="loading">
 
     <div id="images">
     </div>
