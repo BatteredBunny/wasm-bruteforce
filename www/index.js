@@ -1,1 +1,1 @@
-import * as wasm from "wasm-imgur-bruteforce";
+import * as wasm from "wasm-imgur-brute";

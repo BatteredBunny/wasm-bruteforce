@@ -1,25 +1,19 @@
 {
-  "name": "wasm-imgur-bruteforce",
-  "version": "0.1.0",
-  "description": "wasm-imgur-bruteforce",
+  "name": "wasm-imgur-brute-npm",
+  "version": "0.2.0",
+  "description": "wasm-imgur-brute npm package",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server"
   },
-  "keywords": [
-    "webassembly",
-    "wasm",
-    "rust",
-    "webpack"
-  ],
-  "dependencies": {                  
-    "wasm-imgur-bruteforce": "file:../pkg"
+  "dependencies": {
+    "wasm-imgur-brute": "link:../pkg"
   },
   "devDependencies": {
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5",
-    "copy-webpack-plugin": "^5.0.0"
+    "copy-webpack-plugin": "^5.1.2",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.3"
   }
 }
