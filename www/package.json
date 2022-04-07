@@ -1,7 +1,7 @@
 {
-  "name": "wasm-imgur-brute",
+  "name": "wasm-imgur-bruteforce",
   "version": "0.1.0",
-  "description": "create an app to consume rust-generated wasm packages",
+  "description": "wasm-imgur-bruteforce",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -14,7 +14,7 @@
     "webpack"
   ],
   "dependencies": {                  
-    "wasm-imgur-brute": "file:../pkg"
+    "wasm-imgur-bruteforce": "file:../pkg"
   },
   "devDependencies": {
     "webpack": "^4.29.3",
