@@ -1,0 +1,59 @@
+@import "common";
+
+html,
+body {
+  user-select: none;
+  height: 100%;
+}
+
+#menu {
+  position: sticky;
+  top: 10px;
+  background-color: $background-color;
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid $interactive-border-color;
+  border-radius: 10px;
+}
+
+#spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
+
+  #spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid $text-color;
+    border-bottom-color: transparent;
+  
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+i {
+  font-family: "FontAwesome", emoji;
+  font-style: normal;
+}
+
+#images {
+  height: 60vh;
+  padding: 10px;
+
+  .generated_image {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}

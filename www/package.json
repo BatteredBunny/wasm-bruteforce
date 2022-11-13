@@ -1,19 +1,20 @@
 {
   "name": "wasm-imgur-brute-npm",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "wasm-imgur-brute npm package",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "wasm-imgur-brute": "link:../pkg"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^5.1.2",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.3"
+    "sass": "^1.56.1",
+    "vite": "^3.2.2",
+    "vite-plugin-top-level-await": "^1.2.1",
+    "vite-plugin-wasm": "^3.1.0"
   }
 }
