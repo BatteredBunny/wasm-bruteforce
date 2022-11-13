@@ -1,2 +1,2 @@
-import * as wasm from "wasm-imgur-brute";
+import * as wasm from "wasm-bruteforce";
 await wasm.run();
