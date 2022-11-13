@@ -5,9 +5,7 @@
   <meta charset="utf-8">
   <title>WASM bruteforce thingymajig</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style.scss">
-
   <meta content="width=device-width, height=device-height, initial-scale=1" name="viewport">
   <meta name="description" content="Bruteforce images from image hosting websites">
   <meta name="theme-color" content="#1f1f1f">
@@ -23,15 +21,20 @@
 
   <h1 class="text-center">WASM bruteforce thingymajig</h1>
 
+
   <div class="container">
     <div id="menu">
       <button id="clear-all">
-        <i class="fa-solid fa-trash"></i>
+        <svg class="icon">
+          <use href="./node_modules/feather-icons/dist/feather-sprite.svg#trash-2" />
+        </svg>
         Clear all
       </button>
 
       <button id="generate">
-        <i class="fa-solid fa-plus"></i>
+        <svg class="icon">
+          <use href="./node_modules/feather-icons/dist/feather-sprite.svg#plus" />
+        </svg>
         Generate
       </button>
 

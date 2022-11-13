@@ -26,7 +26,7 @@ body {
     height: 48px;
     border: 5px solid $text-color;
     border-bottom-color: transparent;
-  
+
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
@@ -43,9 +43,17 @@ body {
   }
 }
 
-i {
-  font-family: "FontAwesome", emoji;
-  font-style: normal;
+.icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  margin-bottom: 3px;
+
+  vertical-align: middle;
 }
 
 #images {
