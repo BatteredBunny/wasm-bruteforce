@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   common-web-styles: github:ayes-web/common-web-styles
+  feather-icons: ^4.29.0
   sass: ^1.56.1
   vite: ^3.2.2
   vite-plugin-top-level-await: ^1.2.1
@@ -13,6 +14,7 @@ dependencies:
 
 devDependencies:
   common-web-styles: github.com/ayes-web/common-web-styles/f4abfd9ef350f458187b1ee89d7ef425c1011416
+  feather-icons: 4.29.0
   sass: 1.56.1
   vite: 3.2.2_sass@1.56.1
   vite-plugin-top-level-await: 1.2.1_vite@3.2.2
@@ -179,6 +181,15 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: true
+
+  /core-js/3.26.0:
+    resolution: {integrity: sha512-+DkDrhoR4Y0PxDz6rurahuB+I45OsEUv8E1maPTB6OuHRohMMcznBq9TMpdpDMm/hUPob/mJJS3PqgbHpMTQgw==}
+    requiresBuild: true
     dev: true
 
   /esbuild-android-64/0.15.13:
@@ -389,6 +400,13 @@ packages:
       esbuild-windows-32: 0.15.13
       esbuild-windows-64: 0.15.13
       esbuild-windows-arm64: 0.15.13
+    dev: true
+
+  /feather-icons/4.29.0:
+    resolution: {integrity: sha512-Y7VqN9FYb8KdaSF0qD1081HCkm0v4Eq/fpfQYQnubpqi0hXx14k+gF9iqtRys1SIcTEi97xDi/fmsPFZ8xo0GQ==}
+    dependencies:
+      classnames: 2.3.2
+      core-js: 3.26.0
     dev: true
 
   /fill-range/7.0.1:
