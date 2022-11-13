@@ -27,7 +27,7 @@ impl Display for FetchError {
         match self {
             FetchError::Request(e) => writeln!(f, "Error in the request: {e}"),
             FetchError::InvalidImage => writeln!(f, "invalid image"),
-            FetchError::RateLimited => writeln!(f, "Got ratelimited on imgur :c"),
+            FetchError::RateLimited => writeln!(f, "Ratelimited"),
             FetchError::Unexpected => writeln!(f, "Unexpected error"),
         }
     }
