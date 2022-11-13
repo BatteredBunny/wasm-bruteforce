@@ -1,7 +1,7 @@
 {
-  "name": "wasm-imgur-brute-npm",
-  "version": "0.3.0",
-  "description": "wasm-imgur-brute npm package",
+  "name": "wasm-bruteforce-npm",
+  "version": "0.3.1",
+  "description": "wasm-bruteforce npm package",
   "main": "index.html",
   "scripts": {
     "start": "vite",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "wasm-imgur-brute": "link:../pkg"
+    "wasm-bruteforce": "link:../pkg"
   },
   "devDependencies": {
     "common-web-styles": "github:ayes-web/common-web-styles",

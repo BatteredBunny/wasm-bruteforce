@@ -544,8 +544,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1c38c045535d93ec4f0b4defec448e4291638ee608530863b1e2ba115d4fff7f"
 
 [[package]]
-name = "wasm-imgur-brute"
-version = "0.3.0"
+name = "wasm-bruteforce"
+version = "0.3.1"
 dependencies = [
  "getrandom",
  "gloo",
