@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  common-web-styles: github:ayes-web/common-web-styles
   sass: ^1.56.1
   vite: ^3.2.2
   vite-plugin-top-level-await: ^1.2.1
@@ -11,6 +12,7 @@ dependencies:
   wasm-imgur-brute: link:../pkg
 
 devDependencies:
+  common-web-styles: github.com/ayes-web/common-web-styles/f4abfd9ef350f458187b1ee89d7ef425c1011416
   sass: 1.56.1
   vite: 3.2.2_sass@1.56.1
   vite-plugin-top-level-await: 1.2.1_vite@3.2.2
@@ -590,4 +592,10 @@ packages:
       sass: 1.56.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  github.com/ayes-web/common-web-styles/f4abfd9ef350f458187b1ee89d7ef425c1011416:
+    resolution: {tarball: https://codeload.github.com/ayes-web/common-web-styles/tar.gz/f4abfd9ef350f458187b1ee89d7ef425c1011416}
+    name: common-web-styles
+    version: 1.0.0
     dev: true
