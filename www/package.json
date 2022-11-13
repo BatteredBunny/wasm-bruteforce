@@ -12,6 +12,7 @@
     "wasm-imgur-brute": "link:../pkg"
   },
   "devDependencies": {
+    "common-web-styles": "github:ayes-web/common-web-styles",
     "sass": "^1.56.1",
     "vite": "^3.2.2",
     "vite-plugin-top-level-await": "^1.2.1",
