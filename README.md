@@ -1,3 +1,2 @@
 <h1 align="center">Wasm bruteforce thingymajig</h1>
-
-Bruteforce images from image hosting websites 
+<p align="center">Bruteforce images from image hosting website</p>
