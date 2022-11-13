@@ -1,12 +1,12 @@
 
-  
+
 [package]
 name = "wasm-imgur-brute"
-version = "0.2.1"
+version = "0.3.0"
 authors = ["Ayes <ayes2022@protonmail.com>"]
 edition = "2021"
 license = "GPLv3"
-description = "Brute-forces imgur links"
+description = "Bruteforce images from image hosting websites"
 repository = "https://github.com/ayes-web/wasm-imgur-brute"
 
 [lib]
@@ -17,14 +17,14 @@ default = ["wee_alloc"]
 
 [dependencies]
 rand = "0.8.5"
-getrandom = { version = "0.2.6", features = ["js"] }
+getrandom = { version = "0.2.8", features = ["js"] }
 
-wasm-bindgen = { version = "0.2.79", features = ["serde-serialize"] }
-js-sys = "0.3.56"
-wasm-bindgen-futures = "0.4.29"
-gloo = "0.6.1"
-serde = { version = "1.0.136", features = ["derive"] }
-serde_json = "1.0.79"
+wasm-bindgen = { version = "0.2.83", features = ["serde-serialize"] }
+js-sys = "0.3.60"
+wasm-bindgen-futures = "0.4.33"
+gloo = "0.8.0"
+serde = { version = "1.0.147", features = ["derive"] }
+serde_json = "1.0.87"
 wee_alloc = { version = "0.4.5", optional = true }
 
 [profile.release]
@@ -32,7 +32,7 @@ lto = true
 opt-level = "z"
 
 [dependencies.web-sys]
-version = "0.3.56"
+version = "0.3.60"
 features = [
   'Headers',
   'Request',
@@ -44,4 +44,9 @@ features = [
   'Element',
   'Blob',
   'Url',
+  'HtmlInputElement',
+  'HtmlButtonElement',
+  'HtmlAnchorElement',
+  'HtmlImageElement',
+  'HtmlSelectElement'
 ]

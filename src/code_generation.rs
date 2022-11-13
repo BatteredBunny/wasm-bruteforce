@@ -1,8 +1,10 @@
 use std::str;
 
 use rand::distributions::Alphanumeric;
-use rand::Rng;
 use rand::rngs::ThreadRng;
+use rand::Rng;
+
+use crate::sites;
 
 pub struct CodeGenerator {
     rng: ThreadRng,
@@ -11,11 +13,18 @@ pub struct CodeGenerator {
 }
 
 impl CodeGenerator {
-    pub fn new(code_length: usize) -> Self {
-        CodeGenerator {
-            rng: rand::thread_rng(),
-            output: format!("https://i.imgur.com/{:code_length$}.jpg", 0).into_bytes(),
-            code_length,
+    pub fn new(site: &sites::Sites, code_length: usize) -> Self {
+        match *site {
+            sites::Sites::Imgur => CodeGenerator {
+                rng: rand::thread_rng(),
+                output: format!("https://i.imgur.com/{:code_length$}.jpg", 0).into_bytes(),
+                code_length,
+            },
+            sites::Sites::Lightshot => CodeGenerator {
+                rng: rand::thread_rng(),
+                output: format!("https://prnt.sc/{:code_length$}", 0).into_bytes(),
+                code_length,
+            },
         }
     }
 

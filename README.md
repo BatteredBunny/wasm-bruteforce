@@ -1,1 +1,1 @@
-# Wasm imgur bruteforce
+# Wasm bruteforce thingymajig

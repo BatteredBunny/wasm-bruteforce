@@ -3,39 +3,56 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Wasm Imgur bruteforce</title>
+  <title>WASM bruteforce thingymajig</title>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
-  <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+  <link rel="stylesheet" href="./style.scss">
+  <link rel="stylesheet" href="./common.scss">
+
+  <meta content="width=device-width, height=device-height, initial-scale=1" name="viewport">
+  <meta name="description" content="Bruteforce images from image hosting websites">
+  <meta name="theme-color" content="#1f1f1f">
+
+  <script type="module" src="./bootstrap.js"></script>
 </head>
 
 <body>
-  <button id="clear_all">
-    <i class="fa-solid fa-trash"></i>
-    Clear
-  </button>
+  <noscript>
+    <p class="text-center">This page contains webassembly and javascript content, please enable javascript in your
+      browser.</p>
+  </noscript>
 
-  <button id="generate">
-    <i class="fa-solid fa-plus"></i>
-    Generate
-  </button>
-
-  <button id="generate_ten">Gen 10</button>
-
-  <input type="number" id="link_length" value=5 min="5">
-  <label for="link_length">Length to bruteforce</label>
+  <h1 class="text-center">WASM bruteforce thingymajig</h1>
 
   <div class="container">
-    <img id="loading"
-      src="https://web.archive.org/web/20091026235011/http://www.geocities.com/croemmayaguez/loadingv.gif" hidden alt="loading">
+    <div id="menu">
+      <button id="clear-all">
+        <i class="fa-solid fa-trash"></i>
+        Clear all
+      </button>
 
-    <div id="images">
+      <button id="generate">
+        <i class="fa-solid fa-plus"></i>
+        Generate
+      </button>
+
+      <button id="generate-ten">Gen 10</button>
+
+      <select id="site-selection" class="margin-bottom">
+        <option value="imgur">Imgur</option>
+        <option value="lightshot">Lightshot</option>
+      </select>
+
+      <div>Length to bruteforce</div>
+      <input type="number" id="link-length" value=5 min=5 required>
     </div>
-  </div>
 
-  <footer>
-    <script src="./bootstrap.js"></script>
-  </footer>
+    <div id="spinner-wrapper">
+      <div class="hidden" id="spinner"></div>
+    </div>
+
+    <div id="images"></div>
+  </div>
 </body>
 
 </html>
