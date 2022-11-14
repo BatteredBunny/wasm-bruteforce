@@ -1,6 +1,6 @@
 {
   "name": "wasm-bruteforce-npm",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "wasm-bruteforce npm package",
   "main": "index.html",
   "scripts": {

@@ -68,15 +68,19 @@ pub async fn run() {
 
     // Link length validator
     EventListener::new(&link_length_input, "input", move |_| {
-        let new_length = link_length_input2.value_as_number();
-
-        // If invalid sets previous value
-        if new_length.is_nan() {
+        let mut new_length = link_length_input2.value_as_number();
+        
+        if new_length.is_nan() { // If invalid sets previous value
             link_length_input2.set_value_as_number(*input_state2.borrow());
+            return
+        } else if new_length.is_sign_negative() { // changes negative to positive
+            new_length = new_length.abs();
+            link_length_input2.set_value_as_number(new_length);
         } else {
             *input_state2.borrow_mut() = new_length;
-            generator4.site.borrow_mut().set_code_length(new_length)
         }
+
+        generator4.site.borrow_mut().set_code_length(new_length);
     })
     .forget();
 
