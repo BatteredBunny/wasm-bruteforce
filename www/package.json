@@ -1,6 +1,6 @@
 {
   "name": "wasm-bruteforce-npm",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "wasm-bruteforce npm package",
   "main": "index.html",
   "scripts": {
@@ -15,7 +15,7 @@
     "common-web-styles": "github:ayes-web/common-web-styles",
     "feather-icons": "^4.29.0",
     "sass": "^1.56.1",
-    "vite": "^3.2.2",
+    "vite": "^3.2.3",
     "vite-plugin-pwa": "^0.13.3",
     "vite-plugin-top-level-await": "^1.2.1",
     "vite-plugin-wasm": "^3.1.0"

@@ -51,10 +51,11 @@ impl Sites {
                     _ => Err(FetchError::Unexpected),
                 }
             }
-            Sites::Lightshot => { // TODO: implement
+            Sites::Lightshot => {
+                // TODO: implement
                 gloo::dialogs::alert("Unfinished xp");
                 Err(FetchError::RateLimited)
-            },
+            }
         }
     }
 }

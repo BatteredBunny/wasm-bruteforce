@@ -4,13 +4,17 @@ use std::{
     fmt::{Display, Formatter},
 };
 
-use gloo::console;
+use gloo::{console, file::ObjectUrl};
 use wasm_bindgen::JsCast;
 use web_sys::{
     Document, Element, HtmlAnchorElement, HtmlButtonElement, HtmlImageElement, HtmlInputElement,
+    HtmlSelectElement,
 };
 
-use crate::{site::{self, FetchError}, sites::Sites};
+use crate::{
+    site::{self, FetchError},
+    sites::Sites,
+};
 
 #[derive(Debug, Clone)]
 pub enum GeneratorError {
@@ -35,7 +39,9 @@ impl Display for GeneratorError {
 }
 
 pub struct Generator {
+    pub should_stop_now: RefCell<bool>,
     pub site: RefCell<site::Site>,
+    blobs: RefCell<Vec<ObjectUrl>>,
 
     document: Document,
 
@@ -45,16 +51,18 @@ pub struct Generator {
     generate_btn: HtmlButtonElement,
     generate_ten_btn: HtmlButtonElement,
     link_length_input: HtmlInputElement,
+    site_selection: HtmlSelectElement,
+
+    stop_btn: HtmlButtonElement,
 }
 
 impl Generator {
     pub fn new() -> Result<Self, GeneratorError> {
         let document = gloo::utils::document();
         Ok(Self {
-            site: RefCell::new(site::Site::new(
-                Sites::Imgur,
-            Sites::Imgur.default_length(),
-            )),
+            should_stop_now: RefCell::new(false),
+            site: RefCell::new(site::Site::new(Sites::Imgur, Sites::Imgur.default_length())),
+            blobs: RefCell::new(Vec::new()),
 
             spinner: document
                 .get_element_by_id("spinner")
@@ -78,17 +86,33 @@ impl Generator {
                 .get_element_by_id("link-length")
                 .ok_or(GeneratorError::NoElementFound)?
                 .dyn_into()?,
+            site_selection: document
+                .get_element_by_id("site-selection")
+                .ok_or(GeneratorError::NoElementFound)?
+                .dyn_into()?,
+            stop_btn: document
+                .get_element_by_id("stop")
+                .ok_or(GeneratorError::NoElementFound)?
+                .dyn_into()?,
             document,
         })
     }
 
+    pub fn clear_blobs(&self) {
+        *self.blobs.borrow_mut() = Vec::new()
+    }
+
     pub async fn generate(&self, amount: i32) {
+        *self.should_stop_now.borrow_mut() = false;
+        
         self.spinner.set_class_name("");
 
         self.clear_btn.set_disabled(true);
         self.generate_btn.set_disabled(true);
         self.generate_ten_btn.set_disabled(true);
         self.link_length_input.set_disabled(true);
+        self.site_selection.set_disabled(true);
+        self.stop_btn.set_disabled(false);
 
         console::log!(format!(
             "Starting search for {} images of {} length",
@@ -97,7 +121,7 @@ impl Generator {
         ));
 
         let mut found: u16 = 0;
-        'image: while found < amount as u16 {
+        while found < amount as u16 && !*self.should_stop_now.borrow(){
             match self.site.borrow_mut().fetch().await {
                 Ok(res) => {
                     console::log!(format!(
@@ -128,12 +152,13 @@ impl Generator {
 
                     self.images.prepend_with_node_1(&a).unwrap();
                     found += 1;
+                    self.blobs.borrow_mut().push(res.blob);
                 }
                 Err(e) => {
                     if let FetchError::InvalidImage = e {
                     } else {
                         console::log!(format!("Error: {e}"));
-                        break 'image;
+                        *self.should_stop_now.borrow_mut() = true;
                     }
                 }
             };
@@ -144,6 +169,8 @@ impl Generator {
         self.generate_btn.set_disabled(false);
         self.generate_ten_btn.set_disabled(false);
         self.link_length_input.set_disabled(false);
+        self.site_selection.set_disabled(false);
+        self.stop_btn.set_disabled(true);
 
         console::log!("Finished image search");
     }
