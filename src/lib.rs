@@ -38,14 +38,22 @@ pub async fn run() {
     let images = document.get_element_by_id("images").unwrap();
     let generate_btn = document.get_element_by_id("generate").unwrap();
     let generate_ten_btn = document.get_element_by_id("generate-ten").unwrap();
+    let stop_btn = document.get_element_by_id("stop").unwrap();
 
     let generator = Rc::new(Generator::new().unwrap());
     let generator2 = Rc::clone(&generator);
     let generator3 = Rc::clone(&generator);
     let generator4 = Rc::clone(&generator);
+    let generator5 = Rc::clone(&generator);
+    let generator6 = Rc::clone(&generator);
 
     let input_state = Rc::new(RefCell::new(generator.site.borrow().code_length));
     let input_state2 = Rc::clone(&input_state);
+
+    // Emergency stop button!
+    EventListener::new(&stop_btn, "click", move |_| {
+        *generator6.should_stop_now.borrow_mut() = true;
+    }).forget();
 
     // Choosing a site will put default link length in input
     EventListener::new(&site_selection, "change", move |_| {
@@ -72,7 +80,11 @@ pub async fn run() {
     })
     .forget();
 
-    EventListener::new(&clear_btn, "click", move |_| images.set_inner_html("")).forget();
+    EventListener::new(&clear_btn, "click", move |_| {
+        images.set_inner_html("");
+        generator5.clear_blobs();
+    })
+    .forget();
 
     EventListener::new(&generate_btn, "click", move |_| {
         let temp_generator = Rc::clone(&generator);

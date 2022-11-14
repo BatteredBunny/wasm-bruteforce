@@ -2,7 +2,7 @@
 
 [package]
 name = "wasm-bruteforce"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["Ayes <ayes2022@protonmail.com>"]
 edition = "2021"
 license = "GPLv3"
