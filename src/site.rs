@@ -59,7 +59,6 @@ impl Site {
 
     pub fn set_code_length(&mut self, code_length: f64) {
         self.code_length = code_length;
-
         self.code_generator = CodeGenerator::new(&self.site, code_length as usize);
     }
 
