@@ -14,7 +14,7 @@ dependencies:
   wasm-bruteforce: link:../pkg
 
 devDependencies:
-  common-web-styles: github.com/ayes-web/common-web-styles/d5e8eb94046e5d0c18cef42d0061d3dc116b7bd5
+  common-web-styles: github.com/ayes-web/common-web-styles/8a919036119b10c30da490bf41c37581f5f172c7
   feather-icons: 4.29.0
   sass: 1.56.1
   vite: 3.2.3_sass@1.56.1
@@ -142,7 +142,7 @@ packages:
     dependencies:
       '@babel/core': 7.20.2
       '@babel/helper-annotate-as-pure': 7.18.6
-      regexpu-core: 5.2.1
+      regexpu-core: 5.2.2
     dev: true
 
   /@babel/helper-define-polyfill-provider/0.3.3_@babel+core@7.20.2:
@@ -2574,8 +2574,8 @@ packages:
       functions-have-names: 1.2.3
     dev: true
 
-  /regexpu-core/5.2.1:
-    resolution: {integrity: sha512-HrnlNtpvqP1Xkb28tMhBUO2EbyUHdQlsnlAhzWcwHy8WJR53UWr7/MAvqrsQKMbV4qdpv03oTMG8iIhfsPFktQ==}
+  /regexpu-core/5.2.2:
+    resolution: {integrity: sha512-T0+1Zp2wjF/juXMrMxHxidqGYn8U4R+zleSJhX9tQ1PUsS8a9UtYfbsF9LdiVgNX3kiX8RNaKM42nfSgvFJjmw==}
     engines: {node: '>=4'}
     dependencies:
       regenerate: 1.4.2
@@ -2583,7 +2583,7 @@ packages:
       regjsgen: 0.7.1
       regjsparser: 0.9.1
       unicode-match-property-ecmascript: 2.0.0
-      unicode-match-property-value-ecmascript: 2.0.0
+      unicode-match-property-value-ecmascript: 2.1.0
     dev: true
 
   /regjsgen/0.7.1:
@@ -2844,8 +2844,8 @@ packages:
       unicode-property-aliases-ecmascript: 2.1.0
     dev: true
 
-  /unicode-match-property-value-ecmascript/2.0.0:
-    resolution: {integrity: sha512-7Yhkc0Ye+t4PNYzOGKedDhXbYIBe1XEQYQxOPyhcXNMJ0WCABqqj6ckydd6pWRZTHV4GuCPKdBAUiMc60tsKVw==}
+  /unicode-match-property-value-ecmascript/2.1.0:
+    resolution: {integrity: sha512-qxkjQt6qjg/mYscYMC0XKRn3Rh0wFPlfxB0xkt9CfyTvpX1Ra0+rAmdX2QyAobptSEvuy4RtpPRui6XkV+8wjA==}
     engines: {node: '>=4'}
     dev: true
 
@@ -3134,8 +3134,8 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
 
-  github.com/ayes-web/common-web-styles/d5e8eb94046e5d0c18cef42d0061d3dc116b7bd5:
-    resolution: {tarball: https://codeload.github.com/ayes-web/common-web-styles/tar.gz/d5e8eb94046e5d0c18cef42d0061d3dc116b7bd5}
+  github.com/ayes-web/common-web-styles/8a919036119b10c30da490bf41c37581f5f172c7:
+    resolution: {tarball: https://codeload.github.com/ayes-web/common-web-styles/tar.gz/8a919036119b10c30da490bf41c37581f5f172c7}
     name: common-web-styles
-    version: 1.1.0
+    version: 1.2.0
     dev: true

@@ -52,7 +52,6 @@ pub struct Generator {
     generate_ten_btn: HtmlButtonElement,
     link_length_input: HtmlInputElement,
     site_selection: HtmlSelectElement,
-
     stop_btn: HtmlButtonElement,
 }
 
@@ -104,7 +103,7 @@ impl Generator {
 
     pub async fn generate(&self, amount: i32) {
         *self.should_stop_now.borrow_mut() = false;
-        
+
         self.spinner.set_class_name("");
 
         self.clear_btn.set_disabled(true);
