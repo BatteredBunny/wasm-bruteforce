@@ -1,4 +1,4 @@
-@import "./node_modules/common-web-styles/common";
+@import "common-web-styles/common";
 
 html,
 body {
@@ -14,10 +14,10 @@ body {
 #menu {
   position: sticky;
   top: 10px;
-  background-color: $background-color;
+  background-color: var(--background-color);
   display: inline-block;
   padding: 10px;
-  border: 1px solid $interactive-border-color;
+  border: 1px solid var(--interactive-border-color);
   border-radius: 10px;
 }
 
@@ -29,7 +29,7 @@ body {
   #spinner {
     width: 48px;
     height: 48px;
-    border: 5px solid $text-color;
+    border: 5px solid var(--text-color);
     border-bottom-color: transparent;
 
     border-radius: 50%;

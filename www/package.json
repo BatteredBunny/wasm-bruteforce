@@ -1,15 +1,12 @@
 {
   "name": "wasm-bruteforce-npm",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "wasm-bruteforce npm package",
   "main": "index.html",
   "scripts": {
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
-  },
-  "dependencies": {
-    "wasm-bruteforce": "link:../pkg"
   },
   "devDependencies": {
     "common-web-styles": "github:ayes-web/common-web-styles",

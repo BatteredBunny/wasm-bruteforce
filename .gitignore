@@ -1,5 +1,6 @@
-
 target
 www/dist
 www/node_modules
 pkg
+result
+.idea
