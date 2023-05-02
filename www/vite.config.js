@@ -7,7 +7,7 @@ export default defineConfig({
     plugins: [
         topLevelAwait(),
         wasm(),
-        VitePWA({ 
+        VitePWA({
             registerType: 'autoUpdate',
             manifest: {
                 name: "WASM bruteforce thingymajig",
