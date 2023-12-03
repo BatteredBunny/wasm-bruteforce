@@ -1,60 +1,65 @@
-{ pkgs, rustPlatform, makeRustPlatform, mkYarnPackage, fetchYarnDeps }: let
-    targetName = "wasm32-unknown-unknown";
+{
+  pkgs,
+  makeRustPlatform,
+  mkYarnPackage,
+  fetchYarnDeps,
+}: let
+  targetName = "wasm32-unknown-unknown";
 
-    wasm-rust = pkgs.rust-bin.stable.latest.default.override {
-        extensions = [ "rust-src" ];
-        targets = [ targetName ];
-    };
+  wasm-rust = pkgs.rust-bin.stable.latest.default.override {
+    extensions = ["rust-src"];
+    targets = [targetName];
+  };
 
-    rustPlatformWasm = makeRustPlatform {
-        cargo = wasm-rust;
-        rustc = wasm-rust;
-    };
+  rustPlatformWasm = makeRustPlatform {
+    cargo = wasm-rust;
+    rustc = wasm-rust;
+  };
 
-    wasm-build = rustPlatformWasm.buildRustPackage rec {
-          name = "wasm-bruteforce";
-          cargoLock.lockFile = ./Cargo.lock;
+  wasm-build = rustPlatformWasm.buildRustPackage {
+    name = "wasm-bruteforce";
+    cargoLock.lockFile = ./Cargo.lock;
 
-          src = ./.;
+    src = ./.;
 
-          nativeBuildInputs = with pkgs; [
-            wasm-bindgen-cli
-          ];
+    nativeBuildInputs = with pkgs; [
+      wasm-bindgen-cli
+    ];
 
-          buildInputs = with pkgs; [
-            openssl
-            pkg-config
-            gnumake
-          ];
+    buildInputs = with pkgs; [
+      openssl
+      pkg-config
+      gnumake
+    ];
 
-          buildPhase = ''
-            cargo build --target ${targetName} --release
-            wasm-bindgen target/${targetName}/release/wasm_bruteforce.wasm --out-dir=$out/pkg
-          '';
+    buildPhase = ''
+      cargo build --target ${targetName} --release
+      wasm-bindgen target/${targetName}/release/wasm_bruteforce.wasm --out-dir=$out/pkg
+    '';
 
-          installPhase = "echo 'Skipping installPhase'";
-    };
+    installPhase = "echo 'Skipping installPhase'";
+  };
 in
-mkYarnPackage rec {
+  mkYarnPackage rec {
     src = ./www;
 
     offlineCache = fetchYarnDeps {
-        yarnLock = src + "/yarn.lock";
-        hash = "sha256-ToUqmk+aXLXxunzUOS3yK5WDDSjdXIh4278t6mahgkA=";
+      yarnLock = src + "/yarn.lock";
+      hash = "sha256-20eC6hBZKrgR02Ljr+Nm49t+RjgAU30zur3+S+d6cNY=";
     };
 
     buildPhase = ''
-        ln -s ${wasm-build}/pkg ../pkg
-        export HOME=$(mktemp -d)
-        yarn --offline build
-        cp -r dist $out
+      ln -s ${wasm-build}/pkg ../pkg
+      export HOME=$(mktemp -d)
+      yarn --offline build
+      cp -r dist $out
     '';
 
     doDist = false;
 
     configurePhase = ''
-        ln -s $node_modules node_modules
+      ln -s $node_modules node_modules
     '';
 
     installPhase = "echo 'Skipping installPhase'";
-}
+  }

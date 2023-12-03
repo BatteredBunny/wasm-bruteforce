@@ -39,7 +39,7 @@ impl Sites {
         match self {
             Sites::Imgur => {
                 let request =
-                    Request::new(code_generator.generate()).redirect(RequestRedirect::Manual);
+                    Request::get(code_generator.generate()).redirect(RequestRedirect::Manual);
                 let response = request.send().await?;
                 match response.status() {
                     429 => Err(FetchError::RateLimited),

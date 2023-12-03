@@ -4,3 +4,4 @@ www/node_modules
 pkg
 result
 .idea
+.direnv
