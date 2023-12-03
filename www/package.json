@@ -3,6 +3,8 @@
   "version": "0.4.2",
   "description": "wasm-bruteforce npm package",
   "main": "index.html",
+  "license": "GPL-3.0-only",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -10,11 +12,11 @@
   },
   "devDependencies": {
     "common-web-styles": "github:ayes-web/common-web-styles",
-    "feather-icons": "^4.29.0",
-    "sass": "^1.56.1",
-    "vite": "^3.2.3",
-    "vite-plugin-pwa": "^0.13.3",
-    "vite-plugin-top-level-await": "^1.2.1",
-    "vite-plugin-wasm": "^3.1.0"
+    "feather-icons": "^4.29.1",
+    "sass": "^1.69.5",
+    "vite": "^5.0.4",
+    "vite-plugin-pwa": "^0.17.2",
+    "vite-plugin-top-level-await": "^1.3.1",
+    "vite-plugin-wasm": "^3.2.2"
   }
 }
