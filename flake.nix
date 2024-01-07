@@ -33,6 +33,7 @@
               wasm-bindgen-cli
             ];
           };
+
           packages.default = pkgs.callPackage ./build.nix {};
         }
     );
