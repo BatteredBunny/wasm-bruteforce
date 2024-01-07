@@ -2,12 +2,12 @@
 
 [package]
 name = "wasm-bruteforce"
-version = "0.4.2"
-authors = ["ayes-web <ayes2022@protonmail.com>"]
+version = "0.4.3"
+authors = ["BatteredBunny <ayes2022@protonmail.com>"]
 edition = "2021"
 license = "GPLv3"
 description = "Bruteforce images from image hosting websites"
-repository = "https://github.com/ayes-web/wasm-bruteforce"
+repository = "https://github.com/BatteredBunny/wasm-bruteforce"
 
 [lib]
 crate-type = ["cdylib"]
@@ -22,7 +22,7 @@ getrandom = { version = "0.2.11", features = ["js"] }
 wasm-bindgen = { version = "0.2.89", features = ["serde-serialize"] }
 js-sys = "0.3.66"
 wasm-bindgen-futures = "0.4.39"
-gloo = "0.10.0"
+gloo = "0.11.0"
 serde = { version = "1.0.193", features = ["derive"] }
 serde_json = "1.0.108"
 wee_alloc = { version = "0.4.5", optional = true }
