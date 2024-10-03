@@ -1,6 +1,6 @@
 {
   "name": "wasm-bruteforce-npm",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "wasm-bruteforce npm package",
   "main": "index.html",
   "license": "GPL-3.0-only",
@@ -12,11 +12,11 @@
   },
   "devDependencies": {
     "common-web-styles": "github:BatteredBunny/common-web-styles",
-    "feather-icons": "^4.29.1",
-    "sass": "^1.69.7",
-    "vite": "^5.0.11",
-    "vite-plugin-pwa": "^0.17.4",
-    "vite-plugin-top-level-await": "^1.4.1",
+    "feather-icons": "^4.29.2",
+    "sass": "^1.79.4",
+    "vite": "^5.4.8",
+    "vite-plugin-pwa": "^0.20.5",
+    "vite-plugin-top-level-await": "^1.4.4",
     "vite-plugin-wasm": "^3.3.0"
   }
 }
