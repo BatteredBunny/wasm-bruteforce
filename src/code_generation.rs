@@ -1,6 +1,6 @@
 use std::str;
 
-use rand::distributions::Alphanumeric;
+use rand::distr::Alphanumeric;
 use rand::rngs::ThreadRng;
 use rand::Rng;
 
@@ -16,12 +16,12 @@ impl CodeGenerator {
     pub fn new(site: &sites::Sites, code_length: usize) -> Self {
         match *site {
             sites::Sites::Imgur => CodeGenerator {
-                rng: rand::thread_rng(),
+                rng: rand::rng(),
                 output: format!("https://i.imgur.com/{:code_length$}.jpg", 0).into_bytes(),
                 code_length,
             },
             sites::Sites::Lightshot => CodeGenerator {
-                rng: rand::thread_rng(),
+                rng: rand::rng(),
                 output: format!("https://prnt.sc/{:code_length$}", 0).into_bytes(),
                 code_length,
             },

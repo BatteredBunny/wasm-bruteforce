@@ -2,7 +2,7 @@
 
 [package]
 name = "wasm-bruteforce"
-version = "0.4.4"
+version = "0.4.5"
 authors = ["BatteredBunny <ayes2022@protonmail.com>"]
 edition = "2021"
 license = "GPLv3"
@@ -12,41 +12,37 @@ repository = "https://github.com/BatteredBunny/wasm-bruteforce"
 [lib]
 crate-type = ["cdylib"]
 
-[features]
-default = ["wee_alloc"]
-
 [dependencies]
-rand = "0.8.5"
-getrandom = { version = "0.2.15", features = ["js"] }
-
-wasm-bindgen = { version = "0.2.93", features = ["serde-serialize"] }
-js-sys = "0.3.70"
-wasm-bindgen-futures = "0.4.43"
+rand = "0.9.1"
+getrandom = { version = "0.3.2", features = ["wasm_js"] }
+wasm-bindgen = { version = "0.2.100", features = ["serde-serialize"] }
+js-sys = "0.3.77"
+wasm-bindgen-futures = "0.4.50"
 gloo = "0.11.0"
-serde = { version = "1.0.210", features = ["derive"] }
-serde_json = "1.0.128"
-wee_alloc = { version = "0.4.5", optional = true }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+
+[dependencies.web-sys]
+version = "0.3.77"
+features = [
+    'Headers',
+    'Request',
+    'RequestInit',
+    'RequestRedirect',
+    'Response',
+    'Window',
+    'Document',
+    'Element',
+    'Blob',
+    'Url',
+    'HtmlInputElement',
+    'HtmlButtonElement',
+    'HtmlAnchorElement',
+    'HtmlImageElement',
+    'HtmlSelectElement',
+]
 
 [profile.release]
 lto = true
 opt-level = "z"
 
-[dependencies.web-sys]
-version = "0.3.70"
-features = [
-  'Headers',
-  'Request',
-  'RequestInit',
-  'RequestRedirect',
-  'Response',
-  'Window',
-  'Document',
-  'Element',
-  'Blob',
-  'Url',
-  'HtmlInputElement',
-  'HtmlButtonElement',
-  'HtmlAnchorElement',
-  'HtmlImageElement',
-  'HtmlSelectElement'
-]
