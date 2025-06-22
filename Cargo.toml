@@ -14,7 +14,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 rand = "0.9.1"
-getrandom = { version = "0.3.2", features = ["wasm_js"] }
+getrandom = { version = "0.3.3", features = ["wasm_js"] }
 wasm-bindgen = { version = "0.2.100", features = ["serde-serialize"] }
 js-sys = "0.3.77"
 wasm-bindgen-futures = "0.4.50"
