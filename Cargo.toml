@@ -4,7 +4,7 @@
 name = "wasm-bruteforce"
 version = "0.4.5"
 authors = ["BatteredBunny <ayes2022@protonmail.com>"]
-edition = "2021"
+edition = "2024"
 license = "GPLv3"
 description = "Bruteforce images from image hosting websites"
 repository = "https://github.com/BatteredBunny/wasm-bruteforce"

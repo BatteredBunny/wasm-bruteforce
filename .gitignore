@@ -5,3 +5,4 @@ pkg
 result
 .idea
 .direnv
+.DS_Store
