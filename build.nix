@@ -1,7 +1,5 @@
 { pkgs
 , makeRustPlatform
-, mkYarnPackage
-, fetchYarnDeps
 ,
 }:
 let
@@ -41,26 +39,30 @@ let
     installPhase = "echo 'Skipping installPhase'";
   };
 in
-mkYarnPackage rec {
+pkgs.stdenv.mkDerivation (finalAttrs: {
+  pname = "wasm-bruteforce";
+  version = "0.4.5";
+
   src = ./www;
 
-  offlineCache = fetchYarnDeps {
-    yarnLock = src + "/yarn.lock";
-    hash = "sha256-YOmviZlLN+hxfjCcfIJRDUAR0Hd5gM+94rT2Lraj85U=";
-  };
+  nativeBuildInputs = with pkgs; [
+    nodejs
+    pnpm_10.configHook
+  ];
 
   buildPhase = ''
+    runHook preBuild
+
     ln -s ${wasm-build}/pkg ../pkg
-    export HOME=$(mktemp -d)
-    yarn --offline build
+    pnpm build
     cp -r dist $out
+
+    runHook postBuild
   '';
 
-  doDist = false;
-
-  configurePhase = ''
-    ln -s $node_modules node_modules
-  '';
-
-  installPhase = "echo 'Skipping installPhase'";
-}
+  pnpmDeps = pkgs.pnpm_10.fetchDeps {
+    inherit (finalAttrs) pname version src;
+    fetcherVersion = 2;
+    hash = "sha256-cvtyRjma6h3BmtW83hMF7/2WG0mdq5aCV44SpqY/E3A=";
+  };
+})
