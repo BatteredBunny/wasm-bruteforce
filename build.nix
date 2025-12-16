@@ -22,7 +22,7 @@ let
     src = ./.;
 
     nativeBuildInputs = with pkgs; [
-      wasm-bindgen-cli
+      wasm-bindgen-cli_0_2_104
     ];
 
     buildInputs = with pkgs; [
