@@ -1,17 +1,13 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , rust-overlay
-    , ...
+    {
+      self,
+      nixpkgs,
+      ...
     }:
     let
       inherit (nixpkgs) lib;
@@ -20,20 +16,20 @@
 
       forAllSystems = lib.genAttrs systems;
 
-      nixpkgsFor = forAllSystems (system: import nixpkgs {
-        inherit system;
-
-        overlays = [
-          rust-overlay.overlays.default
-        ];
-      });
+      nixpkgsFor = forAllSystems (
+        system:
+        import nixpkgs {
+          inherit system;
+        }
+      );
     in
     {
       overlays.default = final: prev: {
         wasm-bruteforce = self.packages.${final.stdenv.system}.wasm-bruteforce;
       };
 
-      packages = forAllSystems (system:
+      packages = forAllSystems (
+        system:
         let
           pkgs = nixpkgsFor.${system};
         in
@@ -43,26 +39,27 @@
         }
       );
 
-      devShells = forAllSystems (system:
+      devShells = forAllSystems (
+        system:
         let
           pkgs = nixpkgsFor.${system};
-
-          wasm-rust = pkgs.rust-bin.stable.latest.default.override {
-            extensions = [ "rust-src" ];
-            targets = [ "wasm32-unknown-unknown" ];
-          };
         in
         {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
+              cargo
+              rustc
+              llvmPackages.lld
+
               openssl
               pkg-config
               gnumake
-              wasm-rust
               pnpm_10
-              wasm-bindgen-cli_0_2_104
+              wasm-bindgen-cli_0_2_106
+              caddy # caddy file-server --listen :8000 --browse --root result
             ];
           };
-        });
+        }
+      );
     };
 }

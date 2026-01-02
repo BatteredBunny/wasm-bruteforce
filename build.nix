@@ -1,53 +1,65 @@
-{ pkgs
-, makeRustPlatform
-,
+{
+  stdenv,
+  rustPlatform,
+  openssl,
+  gnumake,
+  pkg-config,
+  llvmPackages,
+  wasm-bindgen-cli_0_2_106,
+
+  fetchPnpmDeps,
+  nodejs,
+  pnpmConfigHook,
+  pnpm_10,
 }:
 let
   targetName = "wasm32-unknown-unknown";
+  pname = "wasm-bruteforce";
+  version = "0.4.5";
 
-  wasm-rust = pkgs.rust-bin.stable.latest.default.override {
-    extensions = [ "rust-src" ];
-    targets = [ targetName ];
-  };
+  wasm-build = rustPlatform.buildRustPackage {
+    inherit pname version;
 
-  rustPlatformWasm = makeRustPlatform {
-    cargo = wasm-rust;
-    rustc = wasm-rust;
-  };
-
-  wasm-build = rustPlatformWasm.buildRustPackage {
-    name = "wasm-bruteforce";
     cargoLock.lockFile = ./Cargo.lock;
 
     src = ./.;
 
-    nativeBuildInputs = with pkgs; [
-      wasm-bindgen-cli_0_2_104
+    nativeBuildInputs = [
+      wasm-bindgen-cli_0_2_106
+      pkg-config
+      llvmPackages.lld
     ];
 
-    buildInputs = with pkgs; [
+    buildInputs = [
       openssl
-      pkg-config
       gnumake
     ];
 
+    doCheck = false;
+
     buildPhase = ''
+      runHook preBuild
+
       cargo build --target ${targetName} --release
+
+      mkdir -p $out/pkg
       wasm-bindgen target/${targetName}/release/wasm_bruteforce.wasm --out-dir=$out/pkg
+
+      runHook postBuild
     '';
 
     installPhase = "echo 'Skipping installPhase'";
   };
 in
-pkgs.stdenv.mkDerivation (finalAttrs: {
-  pname = "wasm-bruteforce";
-  version = "0.4.5";
+stdenv.mkDerivation (finalAttrs: {
+  inherit pname version;
 
   src = ./www;
 
-  nativeBuildInputs = with pkgs; [
+  nativeBuildInputs = [
     nodejs
-    pnpm_10.configHook
+    pnpmConfigHook
+    pnpm_10
   ];
 
   buildPhase = ''
@@ -60,9 +72,9 @@ pkgs.stdenv.mkDerivation (finalAttrs: {
     runHook postBuild
   '';
 
-  pnpmDeps = pkgs.pnpm_10.fetchDeps {
+  pnpmDeps = fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
     fetcherVersion = 2;
-    hash = "sha256-3/H2JeMaWNOOIq/PecVc68fN8wgt58RwTux3PGcJ6i8=";
+    hash = "sha256-PtJohmqwFlWnx2vHjbf6QI8efjxnoVANUxRSo2EcdKk=";
   };
 })
