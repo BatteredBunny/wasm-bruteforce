@@ -2,7 +2,6 @@
   stdenv,
   rustPlatform,
   openssl,
-  gnumake,
   pkg-config,
   llvmPackages,
   wasm-bindgen-cli_0_2_106,
@@ -32,7 +31,6 @@ let
 
     buildInputs = [
       openssl
-      gnumake
     ];
 
     doCheck = false;

@@ -6,7 +6,7 @@ https://github.com/BatteredBunny/wasm-bruteforce/assets/52951851/6b3c6b7e-6389-4
 ## Start in development mode
 ```sh
 nix develop
-make start
+just start
 ```
 
 ## Usage with caddy on nixos
