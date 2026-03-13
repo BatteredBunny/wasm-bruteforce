@@ -4,7 +4,7 @@
   openssl,
   pkg-config,
   llvmPackages,
-  wasm-bindgen-cli_0_2_106,
+  wasm-bindgen-cli_0_2_114,
 
   fetchPnpmDeps,
   nodejs,
@@ -24,7 +24,7 @@ let
     src = ./.;
 
     nativeBuildInputs = [
-      wasm-bindgen-cli_0_2_106
+      wasm-bindgen-cli_0_2_114
       pkg-config
       llvmPackages.lld
     ];
@@ -73,6 +73,6 @@ stdenv.mkDerivation (finalAttrs: {
   pnpmDeps = fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
     fetcherVersion = 3;
-    hash = "sha256-U8h79iQ/yntuXzl0k8q7btLYAra6SEoNG6gTpdtEjsE=";
+    hash = "sha256-AY8k8voELNK5u8DDKND5Jm6aJxacLhXeKsQ+W8+vDiI=";
   };
 })

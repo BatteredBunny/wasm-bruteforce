@@ -2,7 +2,7 @@ use std::str;
 
 use rand::distr::Alphanumeric;
 use rand::rngs::ThreadRng;
-use rand::Rng;
+use rand::RngExt;
 
 use crate::sites;
 

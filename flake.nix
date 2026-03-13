@@ -55,7 +55,7 @@
               pkg-config
               just
               pnpm_10
-              wasm-bindgen-cli_0_2_106
+              wasm-bindgen-cli_0_2_114
               caddy # caddy file-server --listen :8000 --browse --root result
             ];
           };
