@@ -4,17 +4,18 @@
   openssl,
   pkg-config,
   llvmPackages,
-  wasm-bindgen-cli_0_2_114,
+  wasm-bindgen-cli_0_2_121,
 
   fetchPnpmDeps,
   nodejs,
   pnpmConfigHook,
-  pnpm_10,
+  pnpm_11,
 }:
 let
   targetName = "wasm32-unknown-unknown";
   pname = "wasm-bruteforce";
   version = "0.4.5";
+  pnpm = pnpm_11;
 
   wasm-build = rustPlatform.buildRustPackage {
     inherit pname version;
@@ -24,7 +25,7 @@ let
     src = ./.;
 
     nativeBuildInputs = [
-      wasm-bindgen-cli_0_2_114
+      wasm-bindgen-cli_0_2_121
       pkg-config
       llvmPackages.lld
     ];
@@ -57,7 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     nodejs
     pnpmConfigHook
-    pnpm_10
+    pnpm
   ];
 
   buildPhase = ''
@@ -71,8 +72,10 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   pnpmDeps = fetchPnpmDeps {
-    inherit (finalAttrs) pname version src;
+    pname = "wasm-bruteforce-frontend";
+    inherit (finalAttrs) version src;
+    inherit pnpm;
     fetcherVersion = 3;
-    hash = "sha256-r9akbB97qJGXVcZWC83TxClNEapVsjS46pEXAaANdn4=";
+    hash = "sha256-oKrVBESA5ryIRW0qIlpayombstmHqd2qFTx22TELO7M=";
   };
 })
