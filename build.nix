@@ -4,7 +4,7 @@
   openssl,
   pkg-config,
   llvmPackages,
-  wasm-bindgen-cli_0_2_121,
+  wasm-bindgen-cli_0_2_126,
 
   fetchPnpmDeps,
   nodejs,
@@ -25,7 +25,7 @@ let
     src = ./.;
 
     nativeBuildInputs = [
-      wasm-bindgen-cli_0_2_121
+      wasm-bindgen-cli_0_2_126
       pkg-config
       llvmPackages.lld
     ];
@@ -75,7 +75,7 @@ stdenv.mkDerivation (finalAttrs: {
     pname = "wasm-bruteforce-frontend";
     inherit (finalAttrs) version src;
     inherit pnpm;
-    fetcherVersion = 3;
-    hash = "sha256-UyFhEOACzNz7lYjEKqmzfFzaxi+O32BZLzh5oUnQvaM=";
+    fetcherVersion = 4;
+    hash = "sha256-p/lLQDIjr+c+xIjdaylQLcVZqDXz9S/1P3rTMu45jVU=";
   };
 })
