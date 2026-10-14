@@ -78,8 +78,8 @@ stdenv.mkDerivation (finalAttrs: {
     fetcherVersion = 4;
     hash =
       if stdenv.hostPlatform.isDarwin then
-        "sha256-4MsbMU+IIO4N7ldwW/7Yp2b+PSGzhx7VHBPx0B1wClc="
+        "sha256-Lrt9vxZuwarGR7tIjOWtmy2c9ym/sVmN+LynqftJcIA="
       else
-        "sha256-4MsbMU+IIO4N7ldwW/7Yp2b+PSGzhx7VHBPx0B1wClc=";
+        "sha256-Lrt9vxZuwarGR7tIjOWtmy2c9ym/sVmN+LynqftJcIA=";
   };
 })
